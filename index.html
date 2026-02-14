@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Minimal Portfolio</title>
+        <meta name="description" content="Minimal portfolio showcasing projects and contact." />
+        <link rel="stylesheet" href="assets/css/styles.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="container header-inner">
+                <h1 class="brand">Jayvee Pontanares</h1>
+                <nav class="nav">
+                    <a href="projects.html">Projects</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container hero-grid">
+                    <div class="hero-left">
+                        <p class="greeting">Hi There,</p>
+                        <h1 class="hero-title">I'm <span class="name">Jayvee <span class="accent">Jayvee</span></span></h1>
+                        <p class="sublead">I Am Into Web Development</p>
+
+                        <div class="hero-actions">
+                            <a class="btn btn-primary" href="about.html">About Me</a>
+                            <div class="social-row">
+                                <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+                                <a class="social-btn" href="https://github.com/jayveepontanares" aria-label="GitHub">GH</a>
+                                <a class="social-btn" href="#" aria-label="Twitter">tw</a>
+                                <a class="social-btn" href="#" aria-label="Instagram">ig</a>
+                                <a class="social-btn" href="#" aria-label="Dev">dv</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-right" aria-hidden="true">
+                        <div class="avatar-ring">
+                            <img src="assets/images/mypicture.jpg" alt="Avatar">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="container projects">
+                <h3>Selected Projects</h3>
+                <div class="grid">
+                    <article class="card">
+                        <h4>Asset Tracker</h4>
+                        <p>Brief description of the project. Link, tech, and role.</p>
+                        <a class="btn" href="#" aria-label="Open Project One">View</a>
+                    </article>
+                    <article class="card">
+                        <h4>Publishing</h4>
+                        <p>Short summary and outcome.</p>
+                        <a class="btn" href="#" aria-label="Open Project Two">View</a>
+                    </article>
+                    <article class="card">
+                        <h4>Tradefront</h4>
+                        <p>Short summary and outcome.</p>
+                        <a class="btn" href="#" aria-label="Open Project Three">View</a>
+                    </article>
+                </div>
+            </section>
+
+            <section id="about" class="container about">
+                <h3>About</h3>
+                <p>I’m a website developer with 5 years of experience building websites from scratch using JavaScript, HTML, and CSS. I’m skilled in using AI tools to improve development speed and quality, and I have hands-on experience with PostgreSQL, Oracle, and Git for version control and collaboration..</p>
+            </section>
+
+            <section id="contact" class="container contact">
+                <h3>Contact</h3>
+                <p>Reach me at <button id="copyEmail" class="link-btn">jayveepontanares@gmail.com</button> — or <a href="contact.html">use the contact form</a>.</p>
+            </section>
+        </main>
+        <hr class="site-divider" aria-hidden="true">
+        <footer class="site-footer">
+            <div class="container">
+                <small>&copy; <span id="year"></span> Jayvee Pontanares — Built different.</small>
+            </div>
+        </footer>
+
+        <script src="assets/js/script.js"></script>
+    </body>
+</html>

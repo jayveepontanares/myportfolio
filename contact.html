@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact — Minimal Portfolio</title>
+    <meta name="description" content="Contact form" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <h1 class="brand">Jayvee Pontanares</h1>
+        <nav class="nav">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="container contact">
+        <h2>Contact Me</h2>
+        <p>Use the form below to send me an email. It's powered by a free service (Formsubmit). Replace <strong>YOUR_EMAIL@example.com</strong> in the form `action` with your real email to receive messages.</p>
+
+        <form id="contactForm" class="contact-form" method="POST" action="https://formsubmit.co/jayveepontanares@gmail.com">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+
+          <!-- Optional: set subject or redirect on success -->
+          <input type="hidden" name="_subject" value="New contact form submission">
+          <input type="hidden" name="_captcha" value="false">
+
+          <div class="form-actions">
+            <button type="submit" class="btn">Send message</button>
+            <a class="btn" href="mailto:jayveepontanares@gmail.com ">Open mail client</a>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>&copy; <span id="year"></span> Jayvee Pontanares </small>
+      </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
