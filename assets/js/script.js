@@ -4,6 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Back to Top button logic
+  const backToTopBtn = document.getElementById('backToTop');
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.style.display = 'block';
+      } else {
+        backToTopBtn.style.display = 'none';
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   const copyBtn = document.getElementById('copyEmail');
   if (copyBtn) {
     copyBtn.addEventListener('click', async () => {
@@ -16,6 +31,18 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (e) {
         alert('Copy not supported. Email: ' + email);
       }
+    });
+  }
+
+  const downloadBtn = document.getElementById('downloadResume');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.href = 'assets/files/resume.pdf';
+      link.download = 'Jayvee_Pontanares_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     });
   }
 });
@@ -44,6 +71,8 @@ emailjs.send('service_gz2qiop', 'template_ca5rvtx', templateParams)
   .then(function(response) {
      alert('SUCCESS!');
      console.log('Email sent successfully:', response);
+     // Clear the form fields
+     form.reset();
   }, function(error) {
      alert('FAILED...', error);
      console.error('Error sending email:', error);
