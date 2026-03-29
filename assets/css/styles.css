@@ -298,17 +298,28 @@ body{
 }
 
 @media (max-width:900px){
-  .about-hero{grid-template-columns:1fr 1fr}
+  .about-hero{grid-template-columns:1fr;align-items:start;gap:36px}
+  .about-visual .visual-frame{max-width:100%}
   .specialities-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
 
 @media (max-width:720px){
   .about-hero{grid-template-columns:1fr;gap:24px;padding-top:40px;padding-bottom:40px}
-  .about-copy{order:1}
-  .about-visual{order:2}
+  .about-copy{order:1;text-align:center}
+  .about-copy p{max-width:none}
+  .about-visual{order:2;justify-content:center}
+  .about-visual .visual-frame{width:100%;max-width:100%;padding:20px}
   .journey-intro,
   .journey-copy{text-align:center}
   .specialities-grid{grid-template-columns:1fr;}
+}
+
+@media (max-width:480px){
+  .about-hero{gap:20px;padding-top:28px;padding-bottom:28px}
+  .about-visual .visual-frame{padding:16px}
+  .about-copy h1{font-size:2.4rem}
+  .about-eyebrow{font-size:0.85rem}
+  .about-role{font-size:1rem}
 }
 
 /* Responsive improvements for all pages */
