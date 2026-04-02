@@ -40,8 +40,6 @@ body{
   line-height:1.5;
 }
 .container{max-width:var(--container);margin:0 auto;padding:48px 20px}
-.site-header{position:relative;z-index:10}
-.site-header .container.header-inner{display:flex;align-items:center;justify-content:space-between}
 
 /* Skills Section Styles */
 #skills {
