@@ -4,6 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <script>
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark-theme');
+        }
+    </script>
   <title>MyPortfolio</title>
   <meta name="description" content="Projects" />
   <link rel="stylesheet" href="assets/css/styles.css">

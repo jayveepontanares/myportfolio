@@ -39,7 +39,9 @@ body{
   -moz-osx-font-smoothing:grayscale;
   line-height:1.5;
 }
+
 .container{max-width:var(--container);margin:0 auto;padding:48px 20px}
+.divider{border:none;height:1px;background:#e2e8f0;margin:40px 0}
 
 /* Skills Section Styles */
 #skills {
@@ -137,7 +139,7 @@ body{
   }
 }
 .header-inner{display:flex;align-items:center;justify-content:space-between}
-.brand-wrap{display:flex;align-items:center;gap:12px}
+.brand-wrap{display:flex;align-items:center;gap:12px;cursor:pointer}
 .brand-logo{width:38px;height:38px;border-radius:50%;background:#7c3aed;display:block;box-shadow:0 10px 30px rgba(124,58,237,0.18);object-fit:cover}
 .brand-logo[alt]{display:block}
 .brand{margin:0;font-weight:600;font-size:1.125rem}
@@ -339,10 +341,6 @@ body{
 .nav{display:flex;gap:18px;align-items:center}
 .nav a{padding:6px 0}
 
-/* Ensure forms and inputs scale */
-.contact-form{width:100%}
-.contact-form input[type="text"],.contact-form input[type="email"],.contact-form textarea{width:100%}
-
 /* Project detail grid */
 .project-grid{display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:start}
 .project-media img{width:100%;height:auto;display:block;border-radius:6px}
@@ -372,3 +370,80 @@ body{
   .brand-logo{width:30px;height:30px}
   .hero-visual-card{padding:16px}
 }
+
+body.dark-theme{
+  background:#0e1118;
+  color:#e2e8f0;
+}
+body.dark-theme .site-header,
+body.dark-theme .hero,
+body.dark-theme .skills-section,
+body.dark-theme .hero-visual-card,
+body.dark-theme .skill-card,
+body.dark-theme .about-visual .visual-frame,
+body.dark-theme .contact,
+body.dark-theme .card,
+body.dark-theme .site-footer,
+body.dark-theme .grid,
+body.dark-theme .journey,
+body.dark-theme .speciality-card,
+body.dark-theme .link-pill,
+body.dark-theme .contact-form input[type="text"],
+body.dark-theme .contact-form input[type="email"],
+body.dark-theme .contact-form textarea,
+body.dark-theme .client-logo,
+body.dark-theme .site-divider,
+body.dark-theme .divider {
+  background:#121824;
+}
+body.dark-theme .site-header,
+body.dark-theme .hero-visual-card,
+body.dark-theme .skills-section,
+body.dark-theme .skill-card,
+body.dark-theme .about-visual .visual-frame,
+body.dark-theme .contact,
+body.dark-theme .card,
+body.dark-theme .speciality-card,
+body.dark-theme .link-pill,
+body.dark-theme .client-logo {
+  border-color:rgba(148,163,184,0.12);
+  box-shadow:0 20px 60px rgba(0,0,0,0.40);
+}
+body.dark-theme .hero{background:#10161f}
+body.dark-theme .site-header{background:rgba(8,12,20,0.96);border-bottom:1px solid rgba(255,255,255,0.08)}
+body.dark-theme .site-footer{background:transparent;border-top-color:rgba(255,255,255,0.10)}
+body.dark-theme main{background:#121824}
+body.dark-theme .nav a{color:#94a3b8}
+body.dark-theme .nav a.active{color:#ffffff;border-color:#7c3aed}
+body.dark-theme .hero-copy p,
+body.dark-theme .about-copy p,
+body.dark-theme .contact p,
+body.dark-theme .skill-list,
+body.dark-theme .skill-label,
+body.dark-theme .journey-label,
+body.dark-theme .speciality-card p,
+body.dark-theme .link-pill{color:#cbd5e1}
+body.dark-theme .brand,
+body.dark-theme .hero-eyebrow,
+body.dark-theme .hero-copy h1,
+body.dark-theme .contact h2,
+body.dark-theme .contact h3,
+body.dark-theme .skills-title,
+body.dark-theme .skill-card h3,
+body.dark-theme .about-copy h1,
+body.dark-theme .about-role{color:#ffffff}
+body.dark-theme .btn,
+body.dark-theme .link-pill,
+body.dark-theme .back-to-top{border-color:rgba(124,58,237,0.35)}
+body.dark-theme .btn{background:rgba(124,58,237,0.12);color:#ffffff}
+body.dark-theme .btn:hover{background:rgba(124,58,237,0.18)}
+body.dark-theme .link-pill{background:rgba(255,255,255,0.08)}
+body.dark-theme .client-logo{background:rgba(255,255,255,0.05);color:#cbd5e1}
+body.dark-theme .journey{background:#0c1220}
+body.dark-theme .site-divider,
+body.dark-theme .divider{background:rgba(226,232,240,0.08);border:none}
+body.dark-theme .contact-form input[type="text"],
+body.dark-theme .contact-form input[type="email"],
+body.dark-theme .contact-form textarea{color:#ffffff}
+body.dark-theme .contact-form input{border-color:#ffffff}
+body.dark-theme .contact-form textarea{border-color:#ffffff}

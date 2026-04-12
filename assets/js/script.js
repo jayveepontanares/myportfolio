@@ -45,6 +45,21 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.removeChild(link);
     });
   }
+
+  const brandWrap = document.querySelector('.brand-wrap');
+  if (brandWrap) {
+    const updateTheme = (isDark) => {
+      document.body.classList.toggle('dark-theme', isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    };
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      updateTheme(true);
+    }
+    brandWrap.addEventListener('click', () => {
+      updateTheme(!document.body.classList.contains('dark-theme'));
+    });
+  }
 });
 
 //initialize emailjs with your user ID
@@ -54,17 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //Attach event listener to the form
 window.onload = function() {
-const form = this.document.getElementById('contactForm');
-form.addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent the default form submission
+  const form = this.document.getElementById('contactForm');
+  if (!form) return;
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
 
-//Collect form data
-const templateParams = {
-  name: document.getElementById('name').value,
-  email: document.getElementById('email').value,
-  message: document.getElementById('message').value,
-  subject: document.getElementById('subject').value 
-};
+  //Collect form data
+  const templateParams = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    message: document.getElementById('message').value,
+    subject: document.getElementById('subject').value 
+  };
 
 //Send the email using EmailJS
 emailjs.send('service_gz2qiop', 'template_ca5rvtx', templateParams)
