@@ -4,9 +4,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script>
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark-theme');
+    }
+  </script>
   <title>MyPortfolio</title>
   <meta name="description" content="Project detail" />
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -42,7 +50,7 @@
         <div class="project-media">
           <img src="assets/images/tradefront.png" alt="Project visual">
         </div>
-        <div class="project-info">S
+        <div class="project-info">
           <h3>Things I do in Project</h3>
           <hr>
           <h5>Tradefront ( April 1 2025 - September 1 2025)</h5>
@@ -59,9 +67,307 @@
 
           <h3>Tech</h3>
           <p>HTML, CSS, JS, JAVA, PostgreSQL</p>
-
+          <button type="button" class="hidesnippet">Code Snippet Example</button>
         </div>
       </div>
+    </section>
+
+    <section class="container codesnippet hidden">
+      <h3>Code Snippets Left and Right</h3>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Backend Example...</h5>
+          <pre class="code-block"><code class="language-Java">
+
+Client (Postman / Browser)
+        ↓
+Controller
+        ↓
+Service (Interface)
+        ↓
+Service Implementation
+        ↓
+DAO
+        ↓
+Repository (JPA)
+        ↓
+Database
+
+
+
+//Entity (User.java)-------------------------------------------
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private String email;
+
+    // Constructors
+    public User() {}
+
+    public User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    // Getters & Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+}
+
+
+
+// DAO Layer (UserDAO.java)--------------------------------
+
+import java.util.List;
+
+public interface UserDAO {
+    User save(User user);
+    List<User> findAll();
+    User findById(Long id);
+    void delete(Long id);
+}
+
+
+
+//Repository (Spring JPA)----------------------------------------------------------------------------
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+}
+
+//DAO Implementation (UserDAOImpl.java)-----------------------------------------------------------
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public class UserDAOImpl implements UserDAO {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    public User save(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public User findById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void delete(Long id) {
+        userRepository.deleteById(id);
+    }
+}
+
+
+
+// Service Interface (UserService.java)--------------------------------
+
+import java.util.List;
+
+public interface UserService {
+    User createUser(User user);
+    List<User> getAllUsers();
+    User getUserById(Long id);
+    void deleteUser(Long id);
+}
+
+
+
+
+// Service Implementation (UserServiceImpl.java)--------------------------------
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private UserDAO userDAO;
+
+    @Override
+    public User createUser(User user) {
+        return userDAO.save(user);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userDAO.findAll();
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        return userDAO.findById(id);
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        userDAO.delete(id);
+    }
+}
+
+
+
+
+// Controller (UserController.java)--------------------------------
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@CrossOrigin(origins = "*")
+@RestController
+@RequestMapping("/users")
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @PostMapping
+    public User create(@RequestBody User user) {
+        return userService.createUser(user);
+    }
+
+    @GetMapping
+    public List<User> getAll() {
+        return userService.getAllUsers();
+    }
+
+    @GetMapping("/{id}")
+    public User getById(@PathVariable Long id) {
+        return userService.getUserById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return "User deleted";
+    }
+}
+          </code></pre>
+        </div>
+
+        <div class="col-md-6">
+          <h5>Frontend Example...</h5>
+          <pre class="code-block"><code class="language-html">
+
+&lt;div class="container"&gt;
+    &lt;h1&gt;User Management&lt;/h1&gt;
+
+    &lt;!-- Create User --&gt;
+    &lt;input type="text" id="name" placeholder="Enter name"&gt;
+    &lt;input type="email" id="email" placeholder="Enter email"&gt;
+    &lt;button onclick="createUser()"&gt;Add User&lt;/button&gt;
+
+    &lt;hr&gt;
+
+    &lt;!-- User List --&gt;
+    &lt;h3&gt;Users List&lt;/h3&gt;
+    &lt;div id="userList"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    const API_URL = "http://localhost:8080/users";
+
+    // Load users on page load
+    window.onload = getUsers;
+
+    // GET all users
+    function getUsers() {
+        fetch(API_URL)
+            .then(res =&gt; res.json())
+            .then(data =&gt; {
+                const userList = document.getElementById("userList");
+                userList.innerHTML = "";
+
+                data.forEach(user =&gt; {
+                    userList.innerHTML += `
+                        &lt;div class="user"&gt;
+                            &lt;span&gt;${user.name} (${user.email})&lt;/span&gt;
+                            &lt;button class="delete" onclick="deleteUser(${user.id})"&gt;X&lt;/button&gt;
+                        &lt;/div&gt;
+                    `;
+                });
+            });
+    }
+
+    // POST create user
+    function createUser() {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+
+        if (!name || !email) {
+            alert("Please fill all fields");
+            return;
+        }
+
+        fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name, email })
+        })
+        .then(() =&gt; {
+            getUsers();
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+        });
+    }
+
+    // DELETE user
+    function deleteUser(id) {
+        fetch(`${API_URL}/${id}`, {
+            method: "DELETE"
+        })
+        .then(() =&gt; getUsers());
+    }
+&lt;/script&gt;
+
+
+
+
+
+
+
+
+
+          </code></pre>
+        </div>
+      </div>
+
     </section>
   </main>
 

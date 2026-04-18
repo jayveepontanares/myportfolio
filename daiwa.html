@@ -13,6 +13,7 @@
   <title>MyPortfolio</title>
   <meta name="description" content="Project detail" />
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -53,10 +54,111 @@
 
           <h3>Tech</h3>
           <p>PostgreSQL, OracleSQL, Ora2Pg, Agile Development</p>
-
+          <hr>
+          <button type="button" class="hidesnippet">Code Snippet Example</button>
         </div>
       </div>
     </section>
+    <section class="container codesnippet hidden">
+      <h3>Code Snippets Left and Right</h3>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h5>ORACLE Example...</h5>
+          <pre class="code-block"><code class="language-SQL">
+SELECT 
+    u.user_id,
+    u.first_name,
+    u.last_name,
+    u.email,
+
+    o.order_id,
+    o.order_date,
+    o.status,
+
+    oi.order_item_id,
+    oi.quantity,
+
+    p.product_id,
+    p.product_name,
+    p.price,
+
+    pay.payment_id,
+    pay.amount,
+    pay.payment_date
+
+FROM users u,
+     orders o,
+     order_items oi,
+     products p,
+     payments pay
+
+WHERE u.user_id = o.user_id(+)
+  AND o.order_id = oi.order_id(+)
+  AND oi.product_id = p.product_id(+)
+  AND o.order_id = pay.order_id(+)
+  AND u.status = 'ACTIVE'
+  AND (o.order_date >= SYSDATE - 30 OR o.order_date IS NULL)
+
+ORDER BY 
+    u.user_id,
+    o.order_date DESC;</code></pre>
+        </div>
+
+        <div class="col-md-6">
+          <h5>Postgres Example...</h5>
+          <pre class="code-block"><code class="language-SQL">
+SELECT 
+    u.user_id,
+    u.first_name,
+    u.last_name,
+    u.email,
+
+    o.order_id,
+    o.order_date,
+    o.status AS order_status,
+
+    oi.order_item_id,
+    oi.quantity,
+
+    p.product_id,
+    p.product_name,
+    p.price,
+
+    pay.payment_id,
+    pay.amount AS payment_amount,
+    pay.payment_date
+
+FROM users u
+
+-- Get orders (even if user has none)
+LEFT JOIN orders o 
+    ON u.user_id = o.user_id
+
+-- Get order items (even if order has none)
+LEFT JOIN order_items oi 
+    ON o.order_id = oi.order_id
+
+-- Get product details
+LEFT JOIN products p 
+    ON oi.product_id = p.product_id
+
+-- Get payment info (even if unpaid)
+LEFT JOIN payments pay 
+    ON o.order_id = pay.order_id
+
+WHERE 
+    u.status = 'ACTIVE'
+    AND (o.order_date >= CURRENT_DATE - INTERVAL '30 days' OR o.order_date IS NULL)
+
+ORDER BY 
+    u.user_id,
+    o.order_date DESC;</code></pre>
+        </div>
+      </div>
+
+    </section>
+
   </main>
 
   <footer class="site-footer">

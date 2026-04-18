@@ -62,36 +62,46 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+
+window.onload = function () {
+  const button = document.querySelector(".hidesnippet");
+  const section = document.querySelector(".codesnippet");
+
+  button.addEventListener("click", function () {
+    section.classList.toggle("hidden");
+  });
+};
+
 //initialize emailjs with your user ID
-(function() {
+(function () {
   emailjs.init('OdVEFY-c_OnI5O8oN');
 })();
 
 //Attach event listener to the form
-window.onload = function() {
+window.onload = function () {
   const form = this.document.getElementById('contactForm');
   if (!form) return;
-  form.addEventListener('submit', function(event) {
+  form.addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the default form submission
 
-  //Collect form data
-  const templateParams = {
-    name: document.getElementById('name').value,
-    email: document.getElementById('email').value,
-    message: document.getElementById('message').value,
-    subject: document.getElementById('subject').value 
-  };
+    //Collect form data
+    const templateParams = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      message: document.getElementById('message').value,
+      subject: document.getElementById('subject').value
+    };
 
-//Send the email using EmailJS
-emailjs.send('service_gz2qiop', 'template_ca5rvtx', templateParams)
-  .then(function(response) {
-     alert('SUCCESS!');
-     console.log('Email sent successfully:', response);
-     // Clear the form fields
-     form.reset();
-  }, function(error) {
-     alert('FAILED...', error);
-     console.error('Error sending email:', error);
+    //Send the email using EmailJS
+    emailjs.send('service_gz2qiop', 'template_ca5rvtx', templateParams)
+      .then(function (response) {
+        alert('SUCCESS!');
+        console.log('Email sent successfully:', response);
+        // Clear the form fields
+        form.reset();
+      }, function (error) {
+        alert('FAILED...', error);
+        console.error('Error sending email:', error);
+      });
   });
-});
 };

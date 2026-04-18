@@ -311,6 +311,100 @@ body{
   line-height:1.8;
 }
 
+.hidesnippet {
+    background-color: #4557be; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+/* Hide the code block by default */
+
+.code-block {
+  overflow-x: hidden;
+}
+
+.col-md-6{
+  border: #d6c8c8 solid 1px;
+}
+
+.hidden {
+    display: none;
+}
+
+.link-back {
+    display: inline-block;
+    margin: 20px 0;
+    color: #4d0ab9;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.link-back:hover {
+    color: #747474;
+    transform: translateX(-3px);
+}
+
+.link-back:active {
+    transform: translateX(-1px);
+    opacity: 0.8;
+}
+
+.myProjects {
+    display: flex;
+    justify-content: center;   /* horizontal center */
+    align-items: center;       /* vertical center */
+    min-height: 60vh;          /* pushes it to middle of screen */
+    text-align: center;
+}
+
+.project-link {
+    display: block;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 16px;
+    background: #f5f5f5;
+    text-decoration: none;
+    color: #333;
+    width: 100%;
+    max-width: 600px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.project-link h1 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.project-link p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Hover effect */
+.project-link:hover {
+    background: #ffffff;
+    color: #000000;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.project-link:hover p {
+    color: #070707;
+}
+
+.project-link:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15),
+                0 0 15px rgba(0,123,255,0.4);
+}
+
 @media (max-width:900px){
   .about-hero{grid-template-columns:1fr;align-items:start;gap:36px}
   .about-visual .visual-frame{max-width:100%}
@@ -447,3 +541,44 @@ body.dark-theme .contact-form input[type="email"],
 body.dark-theme .contact-form textarea{color:#ffffff}
 body.dark-theme .contact-form input{border-color:#ffffff}
 body.dark-theme .contact-form textarea{border-color:#ffffff}
+
+body.dark-theme .project-link {
+    display: block;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 16px;
+    background:#0e1118;
+    text-decoration: none;
+    color: #ffffff;
+    width: 100%;
+    max-width: 600px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+body.dark-theme .project-link h1 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+body.dark-theme .project-link p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Hover effect */
+body.dark-theme .project-link:hover {
+    background:#0e1118;
+    color: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+body.dark-theme .project-link:hover p {
+    color: #ffffff;
+}
+
+body.dark-theme .project-link:hover {
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15),
+                0 0 15px rgba(0,123,255,0.4);
+}
